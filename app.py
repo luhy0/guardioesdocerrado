@@ -1,26 +1,17 @@
-# /// app
-# requires-python = ">=X.XX" TODO: Update this to the minimum Python version you want to support
-# dependencies = [
-#   TODO: Add any dependencies your script requires
-# ]
-# ///
+from flask import Flask, send_from_directory
 
-# TODO: Update the main function to your needs or remove it.
+app = Flask(__name__, static_folder=".", static_url_path="")
 
-
-def main() -> None:
-    print("Start coding in Python today!")
-
-
-if __name__ == "__main__":
-    main()
-from flask import Flask, render_template
-
-app = Flask(__name__)
 
 @app.route('/')
 def inicio():
-    return render_template('index.html')
+    return send_from_directory('.', 'index.html')
+
+
+@app.route('/login')
+def login():
+    return send_from_directory('.', 'login.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

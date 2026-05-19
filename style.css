@@ -142,3 +142,205 @@ button:hover{
 .card p{
     font-size: 18px;
 }
+
+.botao{
+    display: inline-block;
+    background-color: #2d6a4f;
+    color: white;
+
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.botao:hover{
+    background-color: #40916c;
+}
+
+/* LOGIN E CADASTRO */
+
+.auth-page{
+    min-height: calc(100vh - 78px);
+    padding: 70px 50px;
+
+    background:
+        linear-gradient(rgba(27,67,50,0.86), rgba(27,67,50,0.76)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+}
+
+.auth-intro{
+    width: 430px;
+    color: white;
+}
+
+.auth-tag{
+    display: inline-block;
+    background-color: #95d5b2;
+    color: #1b4332;
+
+    padding: 8px 14px;
+    border-radius: 999px;
+
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.auth-intro h2{
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.auth-intro p{
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.auth-container{
+    display: flex;
+    gap: 28px;
+}
+
+.auth-card{
+    width: 320px;
+    background-color: #ffffff;
+
+    padding: 32px;
+    border-radius: 22px;
+
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.28);
+}
+
+.auth-card.destaque{
+    border-top: 8px solid #95d5b2;
+}
+
+.auth-card h3{
+    color: #1b4332;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.auth-card p{
+    color: #52796f;
+    margin-bottom: 22px;
+    line-height: 1.4;
+}
+
+.auth-card label{
+    display: block;
+    color: #1b4332;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.auth-card input{
+    width: 100%;
+    padding: 13px 14px;
+    margin-bottom: 18px;
+
+    border: 2px solid #d8f3dc;
+    border-radius: 10px;
+
+    font-size: 16px;
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.auth-card input:focus{
+    border-color: #40916c;
+    box-shadow: 0px 0px 0px 4px rgba(149,213,178,0.32);
+}
+
+.auth-card button{
+    width: 100%;
+    margin-top: 4px;
+}
+
+.auth-link{
+    display: block;
+    margin-top: 16px;
+
+    color: #2d6a4f;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-link:hover{
+    color: #40916c;
+}
+
+@media (max-width: 1000px){
+    .auth-page{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .auth-intro{
+        width: 100%;
+        text-align: center;
+    }
+
+    .auth-container{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 700px){
+    header{
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav a{
+        display: inline-block;
+        margin: 6px 8px;
+    }
+
+    .banner{
+        padding: 30px;
+    }
+
+    .texto-banner{
+        width: 100%;
+    }
+
+    .texto-banner h2,
+    .auth-intro h2{
+        font-size: 34px;
+    }
+
+    .cards{
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px 50px;
+    }
+
+    .auth-page{
+        padding: 45px 20px;
+    }
+
+    .auth-card{
+        width: 100%;
+    }
+}
