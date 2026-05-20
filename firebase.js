@@ -42,7 +42,7 @@ if (loginForm) {
         try {
             await signInWithEmailAndPassword(auth, email, senha);
             showMessage("Login realizado com sucesso! Redirecionando...", "success");
-            window.location.href = "quiz.html";
+            window.location.href = "home.html";
         } catch (error) {
             showMessage(`Erro no login: ${error.message}`, "error");
         }
@@ -59,8 +59,8 @@ if (registerForm) {
         try {
             const credencial = await createUserWithEmailAndPassword(auth, email, senha);
             await updateProfile(credencial.user, { displayName: nome });
-            showMessage("Conta criada com sucesso! Redirecionando para o quiz...", "success");
-            window.location.href = "quiz.html";
+            showMessage("Conta criada com sucesso! Redirecionando para a home...", "success");
+            window.location.href = "home.html";
         } catch (error) {
             showMessage(`Erro no cadastro: ${error.message}`, "error");
         }
