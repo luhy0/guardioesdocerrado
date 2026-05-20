@@ -1,8 +1,10 @@
+import { auth } from "./firebase.js";
+
 const botaoFinalizar = document.getElementById("finalizar-quiz");
 const resultado = document.getElementById("quiz-resultado");
 
 if (botaoFinalizar) {
-    botaoFinalizar.addEventListener("click", () => {
+    botaoFinalizar.addEventListener("click", async () => {
         const perguntas = [
             { nome: "q1", correta: "lobo-guara" },
             { nome: "q2", correta: "pequi" },
@@ -13,11 +15,14 @@ if (botaoFinalizar) {
 
         perguntas.forEach((pergunta) => {
             const resposta = document.querySelector(`input[name="${pergunta.nome}"]:checked`);
-            if (resposta && resposta.value === pergunta.correta) {
-                acertos += 1;
-            }
+            if (resposta && resposta.value === pergunta.correta) acertos += 1;
         });
 
-        resultado.textContent = `Você acertou ${acertos} de ${perguntas.length} perguntas!`;
+        const earned = acertos * 10;
+        resultado.textContent = `Você acertou ${acertos} de ${perguntas.length} perguntas e ganhou ${earned} pontos!`;
+
+        if (auth.currentUser && window.guardioesDB) {
+            await window.guardioesDB.somarPontos(auth.currentUser.uid, earned);
+        }
     });
 }
