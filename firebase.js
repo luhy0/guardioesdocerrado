@@ -69,17 +69,44 @@ if (registerForm) {
 
 const userName = document.getElementById("user-name");
 const logoutBtn = document.getElementById("logout-btn");
+const homeUserName = document.getElementById("home-user-name");
+const homeUserPoints = document.getElementById("home-user-points");
+const homeUserLevel = document.getElementById("home-user-level");
+const homeProgressBar = document.getElementById("home-progress-bar");
 
-if (userName) {
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            userName.textContent = user.displayName || user.email;
-            return;
-        }
+onAuthStateChanged(auth, (user) => {
+    const protectedPage = userName || homeUserName;
 
+    if (!user && protectedPage) {
         window.location.href = "login.html";
-    });
-}
+        return;
+    }
+
+    if (!user) return;
+
+    const nome = user.displayName || user.email;
+
+    if (userName) {
+        userName.textContent = nome;
+    }
+
+    if (homeUserName) {
+        const key = `guardioes-pontos-${user.uid}`;
+        const pontos = Number(localStorage.getItem(key) || 0);
+        const nivel = Math.floor(pontos / 100);
+        const progresso = pontos % 100;
+
+        homeUserName.textContent = nome;
+        homeUserPoints.textContent = String(pontos);
+        homeUserLevel.textContent = String(nivel);
+
+        if (homeProgressBar) {
+            requestAnimationFrame(() => {
+                homeProgressBar.style.width = `${progresso}%`;
+            });
+        }
+    }
+});
 
 if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
