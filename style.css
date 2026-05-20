@@ -399,27 +399,3 @@ button:hover{
     text-align: center;
     margin-top: 6px;
 }
-
-/* HOME */
-.home-page{padding-bottom:60px;}
-.home-banner{min-height:420px;background:linear-gradient(120deg,rgba(27,67,50,.75),rgba(82,37,7,.52)),url('https://images.unsplash.com/photo-1472396961693-142e6e269027');background-size:cover;background-position:center;display:flex;align-items:center;padding:40px 60px;color:#fff}
-.home-banner-content{max-width:620px;background:rgba(0,0,0,.28);padding:28px;border-radius:18px;backdrop-filter: blur(3px)}
-.kicker{display:inline-block;background:#ffd166;color:#4b2e13;padding:7px 12px;border-radius:999px;font-weight:700;margin-bottom:14px}
-.user-stats{max-width:1000px;margin:-40px auto 30px;background:#fff;padding:22px;border-radius:16px;box-shadow:0 12px 26px rgba(0,0,0,.15)}
-.progress-wrapper{height:12px;background:#e7f0e6;border-radius:99px;overflow:hidden;margin-top:10px}
-.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#2d6a4f,#ffd166)}
-.home-grid{max-width:1000px;margin:0 auto 36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:0 18px}
-.home-card{background:#fff;padding:20px;border-radius:14px;color:#1b4332;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.13);transition:.25s}
-.home-card:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.pokedex-section{max-width:1000px;margin:0 auto;padding:0 18px}
-.pokedex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px}
-.poke-card{background:#fff;padding:14px;border-radius:14px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.12)}
-.poke-card img{width:100%;height:170px;object-fit:cover;border-radius:10px;margin-bottom:10px}
-.poke-card.locked{background:#dce4da;color:#537064}
-.locked-image{height:170px;border-radius:10px;background:#a3b6a6;display:flex;align-items:center;justify-content:center;font-size:70px;color:#f4f7f1;margin-bottom:10px}
-
-@media (max-width:700px){
-  .home-banner{padding:25px 20px;min-height:360px}
-  .home-banner-content h2{font-size:32px}
-  .user-stats{margin:-20px 14px 25px}
-}
