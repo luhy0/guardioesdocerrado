@@ -1,0 +1,91 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAdPQDhJB_MDkyK_6DrBYNIDsxeIm_B3hc",
+    authDomain: "guardioescerrado-903ab.firebaseapp.com",
+    projectId: "guardioescerrado-903ab",
+    storageBucket: "guardioescerrado-903ab.firebasestorage.app",
+    messagingSenderId: "416924056556",
+    appId: "1:416924056556:web:0d76d4e7ca592a3d849ec9",
+    measurementId: "G-B3PWG4QYQC"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+
+const feedback = document.getElementById("auth-feedback");
+const loginForm = document.getElementById("login-form");
+const registerForm = document.getElementById("register-form");
+
+function showMessage(message, type = "info") {
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.className = `auth-feedback ${type}`;
+}
+
+if (loginForm) {
+    loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const email = document.getElementById("login-email").value;
+        const senha = document.getElementById("login-senha").value;
+
+        try {
+            await signInWithEmailAndPassword(auth, email, senha);
+            showMessage("Login realizado com sucesso! Redirecionando...", "success");
+            window.location.href = "quiz.html";
+        } catch (error) {
+            showMessage(`Erro no login: ${error.message}`, "error");
+        }
+    });
+}
+
+if (registerForm) {
+    registerForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const nome = document.getElementById("cadastro-nome").value;
+        const email = document.getElementById("cadastro-email").value;
+        const senha = document.getElementById("cadastro-senha").value;
+
+        try {
+            const credencial = await createUserWithEmailAndPassword(auth, email, senha);
+            await updateProfile(credencial.user, { displayName: nome });
+            showMessage("Conta criada com sucesso! Redirecionando para o quiz...", "success");
+            window.location.href = "quiz.html";
+        } catch (error) {
+            showMessage(`Erro no cadastro: ${error.message}`, "error");
+        }
+    });
+}
+
+const userName = document.getElementById("user-name");
+const logoutBtn = document.getElementById("logout-btn");
+
+if (userName) {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            userName.textContent = user.displayName || user.email;
+            return;
+        }
+
+        window.location.href = "login.html";
+    });
+}
+
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+        await signOut(auth);
+        window.location.href = "login.html";
+    });
+}
+
+export { app, analytics, auth };

@@ -13,5 +13,10 @@ def login():
     return send_from_directory('.', 'login.html')
 
 
+@app.route('/quiz')
+def quiz():
+    return send_from_directory('.', 'quiz.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

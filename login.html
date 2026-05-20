@@ -34,7 +34,7 @@
         </section>
 
         <section class="auth-container" aria-label="Formulários de login e cadastro">
-            <form class="auth-card" action="#" method="post">
+            <form class="auth-card" id="login-form" action="#" method="post">
                 <h3>Entrar</h3>
                 <p>Acesse sua conta para continuar sua jornada.</p>
 
@@ -48,7 +48,7 @@
                 <a class="auth-link" href="#">Esqueci minha senha</a>
             </form>
 
-            <form class="auth-card destaque" action="#" method="post">
+            <form class="auth-card destaque" id="register-form" action="#" method="post">
                 <h3>Criar conta</h3>
                 <p>Cadastre-se para salvar pontos e subir no ranking.</p>
 
@@ -64,7 +64,9 @@
                 <button type="submit">Criar conta</button>
             </form>
         </section>
+        <p id="auth-feedback" class="auth-feedback"></p>
     </main>
 
+    <script type="module" src="firebase.js"></script>
 </body>
 </html>
