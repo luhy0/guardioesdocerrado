@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz do Cerrado | Guardiões do Cerrado</title>
+    <title>Menu do Guardião | Guardiões do Cerrado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,46 +11,49 @@
         <h1>🐺 Guardiões do Cerrado</h1>
         <nav>
             <a href="index.html">Início</a>
-            <a href="quiz.html">Quiz</a>
+            <a href="quiz.html">Menu</a>
             <a href="login.html">Login</a>
         </nav>
     </header>
 
-    <main class="quiz-page">
-        <section class="quiz-header">
+    <main class="menu-page">
+        <section class="menu-hero">
             <h2>Bem-vindo(a), <span id="user-name">Guardião</span>!</h2>
-            <p>Responda ao quiz sobre animais, fauna e flora do Cerrado.</p>
+            <p>Escolha sua próxima missão no Cerrado.</p>
             <button id="logout-btn" type="button">Sair</button>
         </section>
 
-        <section class="quiz-container">
-            <div class="quiz-card" data-correct="lobo-guara">
-                <h3>1) Qual animal é símbolo do Cerrado brasileiro?</h3>
-                <label><input type="radio" name="q1" value="onca"> Onça-pintada</label>
-                <label><input type="radio" name="q1" value="lobo-guara"> Lobo-guará</label>
-                <label><input type="radio" name="q1" value="mico"> Mico-leão-dourado</label>
-            </div>
+        <section class="menu-grid" aria-label="Opções do menu inicial">
+            <article class="menu-card">
+                <h3>🎮 Quiz</h3>
+                <p>Teste seus conhecimentos sobre fauna, flora e bioma do Cerrado.</p>
+                <a class="botao" href="#">Jogar Quiz</a>
+            </article>
 
-            <div class="quiz-card" data-correct="pequi">
-                <h3>2) Qual fruto é muito comum na flora do Cerrado?</h3>
-                <label><input type="radio" name="q2" value="acerola"> Acerola</label>
-                <label><input type="radio" name="q2" value="pequi"> Pequi</label>
-                <label><input type="radio" name="q2" value="uva"> Uva</label>
-            </div>
+            <article class="menu-card">
+                <h3>📖 História</h3>
+                <p>Descubra curiosidades e a importância histórica e cultural do Cerrado.</p>
+                <a class="botao" href="#">Ver Histórias</a>
+            </article>
 
-            <div class="quiz-card" data-correct="veredas">
-                <h3>3) As veredas do Cerrado são áreas associadas principalmente a:</h3>
-                <label><input type="radio" name="q3" value="deserto"> Dunas secas</label>
-                <label><input type="radio" name="q3" value="veredas"> Buritis e nascentes</label>
-                <label><input type="radio" name="q3" value="glaciares"> Geleiras</label>
-            </div>
+            <article class="menu-card">
+                <h3>🦊 Animais Desbloqueados</h3>
+                <ul class="unlock-list">
+                    <li>✅ Lobo-guará</li>
+                    <li>✅ Tamanduá-bandeira</li>
+                    <li>🔒 ???</li>
+                </ul>
+                <a class="botao" href="#">Abrir Coleção</a>
+            </article>
 
-            <button id="finalizar-quiz" type="button">Finalizar Quiz</button>
-            <p id="quiz-resultado" class="quiz-resultado"></p>
+            <article class="menu-card">
+                <h3>🏆 Ranking</h3>
+                <p>Veja os guardiões com mais pontos e suba de posição.</p>
+                <a class="botao" href="#">Ver Ranking</a>
+            </article>
         </section>
     </main>
 
     <script type="module" src="firebase.js"></script>
-    <script src="quiz.js"></script>
 </body>
 </html>

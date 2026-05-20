@@ -399,3 +399,63 @@ button:hover{
     text-align: center;
     margin-top: 6px;
 }
+
+/* MENU INICIAL (rota /quiz) */
+.menu-page{
+    min-height: calc(100vh - 78px);
+    padding: 45px 24px 60px;
+    background: linear-gradient(180deg, #f4f7f1 0%, #e6efe4 100%);
+}
+
+.menu-hero{
+    max-width: 980px;
+    margin: 0 auto 26px;
+    background: linear-gradient(130deg, #1b4332 0%, #2d6a4f 65%, #40916c 100%);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
+
+.menu-hero p{ margin: 10px 0 18px; }
+
+.menu-grid{
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.menu-card{
+    background: #fff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: .25s;
+}
+
+.menu-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+}
+
+.menu-card h3{
+    color: #1b4332;
+    margin-bottom: 10px;
+}
+
+.menu-card p{
+    margin-bottom: 14px;
+    color: #2f4f45;
+    line-height: 1.4;
+}
+
+.unlock-list{
+    list-style: none;
+    margin: 8px 0 14px;
+    padding: 0;
+    color: #2f4f45;
+}
+
+.unlock-list li{ margin-bottom: 8px; }
