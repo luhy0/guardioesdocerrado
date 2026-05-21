@@ -455,3 +455,65 @@ button:hover,
     font-size: 1rem;
   }
 }
+
+/* POKEDEX DB PAGE */
+.animais-page {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.animais-topo {
+  background: linear-gradient(130deg, #1b4332, #2d6a4f);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.animais-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.animal-card {
+  flex: 1 1 220px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: var(--sombra);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.animal-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 14px 26px rgba(0,0,0,.18);
+}
+
+.animal-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.animal-lock {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #93a79a, #7e9185);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.animal-card.bloqueado h3,
+.animal-card.bloqueado p {
+  color: #5f6e66;
+}
