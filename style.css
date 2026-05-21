@@ -517,3 +517,14 @@ button:hover,
 .animal-card.bloqueado p {
   color: #5f6e66;
 }
+
+/* CONQUISTAS */
+.conquistas-page{width:min(1120px,100%);margin:0 auto;padding:24px 16px 40px}
+.conquistas-grid{display:flex;flex-wrap:wrap;gap:14px}
+.conquista-card{flex:1 1 240px;background:#fff;border-radius:14px;padding:14px;box-shadow:var(--sombra);transition:transform .25s ease, box-shadow .25s ease}
+.conquista-card:hover{transform:translateY(-7px);box-shadow:0 14px 26px rgba(0,0,0,.18)}
+.medal-icon{font-size:2rem;margin-bottom:8px}
+.conquista-card.locked{opacity:.8;background:#edf2ee}
+.conquista-card.unlocked{border:2px solid #ffd166}
+@keyframes medalUnlock{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+.medal-pop{animation:medalUnlock .45s ease}
