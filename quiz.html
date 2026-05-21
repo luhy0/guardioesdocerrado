@@ -1,1 +1,59 @@
-<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Quiz</title><link rel="stylesheet" href="style.css"></head><body><header><h1>🎮 Quiz do Cerrado</h1><nav><a href="/">Início</a><a href="/login">Login</a><a href="/mapa">Mapa</a><a href="/historias">Histórias</a></nav></header><main class="destaque-cerrado"><div class="destaque-texto"><h2>Quiz em construção</h2><p>Página ativa e funcionando sem erro 404.</p></div></main></body></html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu do Guardião | Guardiões do Cerrado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🐺 Guardiões do Cerrado</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="quiz.html">Menu</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="menu-page">
+        <section class="menu-hero">
+            <h2>Bem-vindo(a), <span id="user-name">Guardião</span>!</h2>
+            <p>Escolha sua próxima missão no Cerrado.</p>
+            <button id="logout-btn" type="button">Sair</button>
+        </section>
+
+        <section class="menu-grid" aria-label="Opções do menu inicial">
+            <article class="menu-card">
+                <h3>🎮 Quiz</h3>
+                <p>Teste seus conhecimentos sobre fauna, flora e bioma do Cerrado.</p>
+                <a class="botao" href="#">Jogar Quiz</a>
+            </article>
+
+            <article class="menu-card">
+                <h3>📖 História</h3>
+                <p>Descubra curiosidades e a importância histórica e cultural do Cerrado.</p>
+                <a class="botao" href="#">Ver Histórias</a>
+            </article>
+
+            <article class="menu-card">
+                <h3>🦊 Animais Desbloqueados</h3>
+                <ul class="unlock-list">
+                    <li>✅ Lobo-guará</li>
+                    <li>✅ Tamanduá-bandeira</li>
+                    <li>🔒 ???</li>
+                </ul>
+                <a class="botao" href="#">Abrir Coleção</a>
+            </article>
+
+            <article class="menu-card">
+                <h3>🏆 Ranking</h3>
+                <p>Veja os guardiões com mais pontos e suba de posição.</p>
+                <a class="botao" href="#">Ver Ranking</a>
+            </article>
+        </section>
+    </main>
+
+    <script type="module" src="firebase.js"></script>
+</body>
+</html>

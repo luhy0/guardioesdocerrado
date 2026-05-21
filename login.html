@@ -1,58 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Guardiões do Cerrado</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro | Guardiões do Cerrado</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>🐺 Guardiões do Cerrado</h1>
-    <nav>
-      <a href="/">Início</a>
-      <a href="/quiz">Quiz</a>
-      <a href="/mapa">Mapa</a>
-      <a href="/historias">Histórias</a>
-      <a href="/login">Login</a>
-    </nav>
-  </header>
 
-  <main class="auth-page">
-    <section class="auth-intro">
-      <span class="auth-tag">🌿 Área do Guardião</span>
-      <h2>Entre na sua missão</h2>
-      <p>Use qualquer e-mail/senha para teste local.</p>
-    </section>
+    <!-- MENU -->
+    <header>
+        <h1>🐺 Guardiões do Cerrado</h1>
 
-    <section class="auth-container">
-      <form class="auth-card" id="login-form">
-        <h3>Entrar</h3>
-        <label for="email">E-mail</label>
-        <input id="email" type="email" required>
-        <label for="senha">Senha</label>
-        <input id="senha" type="password" required>
-        <button type="submit">Entrar</button>
-        <p id="login-feedback" class="auth-feedback"></p>
-      </form>
-    </section>
-  </main>
+        <nav>
+            <a href="home.html">Início</a>
+            <a href="">Espécies</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="#">Ranking</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
 
-  <script>
-    document.getElementById('login-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const senha = document.getElementById('senha').value.trim();
-      const fb = document.getElementById('login-feedback');
-      if(!email || !senha){
-        fb.textContent = 'Preencha e-mail e senha.';
-        fb.className = 'auth-feedback error';
-        return;
-      }
-      fb.textContent = 'Login realizado com sucesso!';
-      fb.className = 'auth-feedback success';
-      setTimeout(() => window.location.href = '/quiz', 600);
-    });
-  </script>
+    <!-- LOGIN E CADASTRO -->
+    <main class="auth-page">
+        <section class="auth-intro">
+            <span class="auth-tag">🌿 Área do Guardião</span>
+            <h2>Entre na sua missão pelo Cerrado</h2>
+            <p>
+                Faça login para continuar aprendendo, responder quizzes e acompanhar sua pontuação.
+                Se ainda não faz parte, crie sua conta e vire um novo guardião.
+            </p>
+        </section>
+
+        <section class="auth-container" aria-label="Formulários de login e cadastro">
+            <form class="auth-card" id="login-form" action="#" method="post">
+                <h3>Entrar</h3>
+                <p>Acesse sua conta para continuar sua jornada.</p>
+
+                <label for="login-email">E-mail</label>
+                <input type="email" id="login-email" name="login-email" placeholder="seuemail@exemplo.com" required>
+
+                <label for="login-senha">Senha</label>
+                <input type="password" id="login-senha" name="login-senha" placeholder="Digite sua senha" required>
+
+                <button type="submit">Entrar na conta</button>
+                <a class="auth-link" href="#">Esqueci minha senha</a>
+            </form>
+
+            <form class="auth-card destaque" id="register-form" action="#" method="post">
+                <h3>Criar conta</h3>
+                <p>Cadastre-se para salvar pontos e subir no ranking.</p>
+
+                <label for="cadastro-nome">Nome</label>
+                <input type="text" id="cadastro-nome" name="cadastro-nome" placeholder="Seu nome" required>
+
+                <label for="cadastro-email">E-mail</label>
+                <input type="email" id="cadastro-email" name="cadastro-email" placeholder="seuemail@exemplo.com" required>
+
+                <label for="cadastro-senha">Senha</label>
+                <input type="password" id="cadastro-senha" name="cadastro-senha" placeholder="Crie uma senha" required>
+
+                <button type="submit">Criar conta</button>
+            </form>
+        </section>
+        <p id="auth-feedback" class="auth-feedback"></p>
+    </main>
+
+    <script type="module" src="firebase.js"></script>
 </body>
 </html>
