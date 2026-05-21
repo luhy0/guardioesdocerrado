@@ -71,6 +71,11 @@ def quiz():
     return send_from_directory('.', 'quiz.html')
 
 
+@app.route('/mapa')
+def mapa():
+    return send_from_directory('.', 'mapa.html')
+
+
 @app.route('/mock-login/<int:user_id>')
 def mock_login(user_id):
     conn = get_conn()
