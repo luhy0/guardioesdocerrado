@@ -1,29 +1,35 @@
-import sqlite3
-from pathlib import Path
-from flask import Flask, render_template, redirect, url_for, session, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='.', static_url_path='')
-app.secret_key = 'guardioes-cerrado-secret'
-DB_PATH = Path(__file__).with_name('guardioes.db')
 
 
-def get_conn():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+@app.route('/')
+def inicio():
+    return send_from_directory('.', 'index.html')
 
 
-def init_db():
-    conn = get_conn()
-    cur = conn.cursor()
-    cur.execute('''CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, email TEXT UNIQUE NOT NULL, pontos INTEGER NOT NULL DEFAULT 0)''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS animais (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, imagem TEXT NOT NULL, pontos_necessarios INTEGER NOT NULL)''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS conquistas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, descricao TEXT NOT NULL, pontos_minimos INTEGER NOT NULL UNIQUE)''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS usuario_conquistas (id INTEGER PRIMARY KEY AUTOINCREMENT, usuario_id INTEGER NOT NULL, conquista_id INTEGER NOT NULL, unlocked_at TEXT DEFAULT CURRENT_TIMESTAMP, UNIQUE(usuario_id, conquista_id), FOREIGN KEY(usuario_id) REFERENCES usuarios(id), FOREIGN KEY(conquista_id) REFERENCES conquistas(id))''')
+@app.route('/login')
+def login():
+    return send_from_directory('.', 'login.html')
 
-    if cur.execute('SELECT COUNT(*) FROM animais').fetchone()[0] == 0:
-        cur.executemany('INSERT INTO animais (nome, imagem, pontos_necessarios) VALUES (?, ?, ?)', [
-            ('Lobo-guará', 'https://upload.wikimedia.org/wikipedia/commons/5/58/Chrysocyon_brachyurus.jpg', 0),
+
+@app.route('/quiz')
+def quiz():
+    return send_from_directory('.', 'quiz.html')
+
+
+@app.route('/mapa')
+def mapa():
+    return send_from_directory('.', 'mapa.html')
+
+
+@app.route('/historias')
+def historias():
+    return send_from_directory('.', 'historias.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
             ('Tamanduá-bandeira', 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Myrmecophaga_tridactyla2.jpg', 30),
             ('Ema', 'https://upload.wikimedia.org/wikipedia/commons/1/12/Rhea_americana_-Brazil-8a.jpg', 60),
             ('Onça-pintada', 'https://upload.wikimedia.org/wikipedia/commons/0/0a/Panthera_onca_at_the_Toronto_Zoo.jpg', 90),
