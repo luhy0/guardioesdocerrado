@@ -76,6 +76,11 @@ def mapa():
     return send_from_directory('.', 'mapa.html')
 
 
+@app.route('/historias')
+def historias():
+    return send_from_directory('.', 'historias.html')
+
+
 @app.route('/mock-login/<int:user_id>')
 def mock_login(user_id):
     conn = get_conn()
