@@ -172,6 +172,9 @@ button:hover{ background-color: #40916c; }
 .auth-feedback{margin-top:12px;font-weight:bold;}
 .auth-feedback.success{color:#2d6a4f;}
 .auth-feedback.error{color:#b00020;}
+
+.auth-card-text{margin:6px 0 10px;color:#4a6659;font-size:14px;}
+.auth-card-destaque{border-top:6px solid #95d5b2;}
   transition: transform 0.25s ease;
 }
 
