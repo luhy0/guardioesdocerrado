@@ -15,24 +15,6 @@ def login():
     return send_from_directory('.', 'login.html')
 
 
-@app.route('/quiz')
-@app.route('/quiz.html')
-def quiz():
-    return send_from_directory('.', 'quiz.html')
-
-
-@app.route('/mapa')
-@app.route('/mapa.html')
-def mapa():
-    return send_from_directory('.', 'mapa.html')
-
-
-@app.route('/historias')
-@app.route('/historias.html')
-def historias():
-    return send_from_directory('.', 'historias.html')
-
-
 if __name__ == '__main__':
     app.run(debug=True)
             ('Tamanduá-bandeira', 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Myrmecophaga_tridactyla2.jpg', 30),
