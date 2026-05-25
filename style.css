@@ -34,7 +34,7 @@ nav a:hover{ color: #95d5b2; }
     min-height: 520px;
     background-image:
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url("https://upload.wikimedia.org/wikipedia/commons/a/a9/Cerrado_Brazil.jpg");
+        url("https://images.unsplash.com/photo-1506744038136-46273834b3fb");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -162,7 +162,7 @@ button:hover{ background-color: #40916c; }
 .botao{display:inline-block;background-color:#2d6a4f;color:#fff;border:none;padding:15px 30px;border-radius:10px;font-size:18px;text-decoration:none;transition:.3s;}
 .botao:hover{background-color:#40916c;}
 
-.auth-page{min-height:calc(100vh - 80px);padding:40px 20px;display:flex;gap:20px;justify-content:center;align-items:flex-start;background:linear-gradient(rgba(27,67,50,.75),rgba(27,67,50,.75)),url("https://upload.wikimedia.org/wikipedia/commons/a/a9/Cerrado_Brazil.jpg") center/cover;}
+.auth-page{min-height:calc(100vh - 80px);padding:40px 20px;display:flex;gap:20px;justify-content:center;align-items:flex-start;background:linear-gradient(rgba(27,67,50,.75),rgba(27,67,50,.75)),url("https://images.unsplash.com/photo-1506744038136-46273834b3fb") center/cover;}
 .auth-intro{max-width:420px;color:#fff;}
 .auth-tag{display:inline-block;background:#ffd166;color:#3f2f00;padding:6px 12px;border-radius:999px;margin-bottom:12px;font-weight:bold;}
 .auth-container{display:flex;flex-wrap:wrap;gap:16px;}
