@@ -166,7 +166,7 @@ button:hover{ background-color: #40916c; }
 .auth-intro{max-width:420px;color:#fff;}
 .auth-tag{display:inline-block;background:#ffd166;color:#3f2f00;padding:6px 12px;border-radius:999px;margin-bottom:12px;font-weight:bold;}
 .auth-container{display:flex;flex-wrap:wrap;gap:16px;}
-.auth-card{background:#fff;padding:24px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.2);width:min(360px,100%);}
+.auth-card{background-color:#ffffff;padding:24px;border-radius:20px;border:1px solid #e6efe9;box-shadow:0 8px 20px rgba(0,0,0,.2);width:min(360px,100%);}
 .auth-card label{display:block;margin:10px 0 6px;color:#1b4332;font-weight:bold;}
 .auth-card input{width:100%;padding:12px;border:2px solid #d8f3dc;border-radius:10px;}
 .auth-feedback{margin-top:12px;font-weight:bold;}
