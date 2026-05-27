@@ -1,20 +1,47 @@
 from flask import Flask, send_from_directory, request, session, jsonify, redirect
-import json
-from urllib import request as urlrequest
+import os
+
+import firebase_admin
+from firebase_admin import credentials, auth as admin_auth, firestore
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 app.secret_key = 'guardioes-secret-key'
-FIREBASE_API_KEY = 'AIzaSyAdPQDhJB_MDkyK_6DrBYNIDsxeIm_B3hc'
+
+# Equivalente ao SDK enviado:
+# var admin = require("firebase-admin");
+# var serviceAccount = require("path/to/serviceAccountKey.json");
+# admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+SERVICE_ACCOUNT_PATH = os.getenv('FIREBASE_SERVICE_ACCOUNT', 'serviceAccountKey.json')
+
+if not firebase_admin._apps:
+    cred = credentials.Certificate(SERVICE_ACCOUNT_PATH)
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
 
 
 def verify_id_token(id_token: str):
-    endpoint = f"https://identitytoolkit.googleapis.com/v1/accounts:lookup?key={FIREBASE_API_KEY}"
-    payload = json.dumps({'idToken': id_token}).encode('utf-8')
-    req = urlrequest.Request(endpoint, data=payload, headers={'Content-Type': 'application/json'})
-    with urlrequest.urlopen(req, timeout=10) as resp:
-        data = json.loads(resp.read().decode('utf-8'))
-    users = data.get('users', [])
-    return users[0] if users else None
+    return admin_auth.verify_id_token(id_token)
+
+
+def ensure_user_document(decoded):
+    uid = decoded.get('uid')
+    if not uid:
+        return None
+
+    user_ref = db.collection('usuarios').document(uid)
+    snap = user_ref.get()
+    if not snap.exists:
+        user_ref.set({
+            'uid': uid,
+            'nome': decoded.get('name') or decoded.get('email', 'Guardião'),
+            'email': decoded.get('email', ''),
+            'pontos': 1250,
+            'nivel': 4,
+            'missoes': 12,
+            'medalhas': 5,
+        })
+    return user_ref.get().to_dict()
 
 
 @app.route('/')
@@ -42,16 +69,16 @@ def session_login():
     token = body.get('idToken')
     if not token:
         return jsonify({'ok': False, 'error': 'Token ausente'}), 400
+
     try:
-        user = verify_id_token(token)
-        if not user:
-            return jsonify({'ok': False, 'error': 'Token inválido'}), 401
-        session['uid'] = user.get('localId')
-        session['email'] = user.get('email', '')
-        session['name'] = user.get('displayName') or user.get('email', 'Guardião')
+        decoded = verify_id_token(token)
+        profile = ensure_user_document(decoded)
+        session['uid'] = decoded.get('uid')
+        session['email'] = decoded.get('email', '')
+        session['name'] = (profile or {}).get('nome') or decoded.get('name') or decoded.get('email', 'Guardião')
         return jsonify({'ok': True})
-    except Exception:
-        return jsonify({'ok': False, 'error': 'Falha ao validar sessão'}), 500
+    except Exception as exc:
+        return jsonify({'ok': False, 'error': f'Falha ao validar sessão: {exc}'}), 500
 
 
 @app.route('/session-logout', methods=['POST'])
@@ -62,9 +89,21 @@ def session_logout():
 
 @app.route('/me')
 def me():
-    if not session.get('uid'):
+    uid = session.get('uid')
+    if not uid:
         return jsonify({'ok': False}), 401
-    return jsonify({'ok': True, 'uid': session['uid'], 'name': session.get('name', 'Guardião'), 'email': session.get('email', '')})
+
+    profile = db.collection('usuarios').document(uid).get().to_dict() or {}
+    return jsonify({
+        'ok': True,
+        'uid': uid,
+        'name': profile.get('nome', session.get('name', 'Guardião')),
+        'email': profile.get('email', session.get('email', '')),
+        'pontos': profile.get('pontos', 0),
+        'nivel': profile.get('nivel', 1),
+        'missoes': profile.get('missoes', 0),
+        'medalhas': profile.get('medalhas', 0),
+    })
 
 
 if __name__ == '__main__':
