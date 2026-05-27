@@ -13,6 +13,11 @@ app.secret_key = 'guardioes-secret-key'
 # admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 SERVICE_ACCOUNT_PATH = os.getenv('FIREBASE_SERVICE_ACCOUNT', 'serviceAccountKey.json')
 
+# Configuração solicitada (SDK Python):
+# import firebase_admin
+# from firebase_admin import credentials
+# cred = credentials.Certificate("path/to/serviceAccountKey.json")
+# firebase_admin.initialize_app(cred)
 if not firebase_admin._apps:
     cred = credentials.Certificate(SERVICE_ACCOUNT_PATH)
     firebase_admin.initialize_app(cred)
