@@ -252,3 +252,15 @@ button:hover{ background-color: #40916c; }
 .curiosidade{margin-top:16px;background:#fff5db;border-left:6px solid #ffd166;border-radius:12px;padding:14px}
 .card-m,.ranking,.card-s{transition:.25s}.card-m:hover,.ranking:hover,.card-s:hover{transform:translateY(-4px)}
 @media (max-width:900px){.hero-dash{grid-template-columns:1fr}.grid-dash{grid-template-columns:1fr}.dash-nav{flex-direction:column;align-items:flex-start}}
+
+
+/* Ajuste de legibilidade (estilo do primeiro modelo) */
+.auth-intro{color:#ffffff;}
+.auth-intro h2{color:#ffffff;}
+.auth-intro p{color:#e8f5ed;font-size:18px;line-height:1.5;}
+.auth-card{color:#1b4332;}
+.auth-card h3{color:#1b4332;}
+.auth-card-text{color:#3f5d50;}
+.auth-card label{color:#1b4332;}
+.auth-card input{color:#1f2a24;}
+.auth-card input::placeholder{color:#6b7f76;}
