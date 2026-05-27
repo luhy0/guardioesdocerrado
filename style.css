@@ -231,3 +231,24 @@ button:hover{ background-color: #40916c; }
     .auth-container{ flex-direction: column; }
     .auth-card{ flex: 1 1 100%; }
 }
+
+/* DASHBOARD */
+.dash-nav{position:sticky;top:0;z-index:10;background:#1b4332;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;color:#fff}
+.dash-nav nav{display:flex;flex-wrap:wrap;gap:8px}
+.dash-nav nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:8px}
+.dash-nav nav a:hover{background:rgba(255,255,255,.15)}
+.user-mini{display:flex;align-items:center;gap:10px}.user-mini img{width:42px;height:42px;border-radius:50%}
+.user-mini small{display:block;color:#d8f3dc}.user-mini button{padding:8px 12px;font-size:14px}
+.dash-page{padding:20px;max-width:1200px;margin:0 auto}
+.hero-dash{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;background:linear-gradient(rgba(14,43,31,.45),rgba(14,43,31,.45)),url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover;border-radius:20px;padding:24px;color:#fff}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.stats div{background:rgba(255,255,255,.16);padding:10px;border-radius:12px;min-width:120px}
+.stats span{display:block;font-size:12px}.stats strong{font-size:24px}
+.progress-card{background:#fff;color:#1b4332;padding:18px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.progress{height:12px;background:#edf2ee;border-radius:999px;overflow:hidden;margin:10px 0}.progress div{height:100%;width:25%;background:linear-gradient(90deg,#2d6a4f,#ffd166);transition:width .8s}
+.grid-dash{display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:18px}
+.mission-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.card-m{background:#fff;border-radius:14px;box-shadow:0 8px 18px rgba(0,0,0,.12);padding:14px;display:flex;justify-content:space-between;align-items:center}
+.ranking{background:#fff;border-radius:14px;padding:14px;box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.species{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}.card-s{background:#fff;border-radius:14px;padding:12px;box-shadow:0 8px 18px rgba(0,0,0,.12)}.card-s img{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:8px}
+.curiosidade{margin-top:16px;background:#fff5db;border-left:6px solid #ffd166;border-radius:12px;padding:14px}
+.card-m,.ranking,.card-s{transition:.25s}.card-m:hover,.ranking:hover,.card-s:hover{transform:translateY(-4px)}
+@media (max-width:900px){.hero-dash{grid-template-columns:1fr}.grid-dash{grid-template-columns:1fr}.dash-nav{flex-direction:column;align-items:flex-start}}
